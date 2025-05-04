@@ -2,55 +2,258 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hey, just looking to chat 🙂</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join My Vibrant Community! 🌟</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fce4ec;
-      color: #333;
+    :root {
+      --primary: #ff6b9d;
+      --secondary: #ff4081;
+      --dark-pink: #e91e63;
+      --text: #333;
+      --light: #fff0f6;
+    }
+    
+    * {
       margin: 0;
       padding: 0;
-      text-align: center;
+      box-sizing: border-box;
     }
-    .container {
-      padding: 30px;
+    
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
     }
-    .profile-pic {
+    
+    /* Optimized Video Background */
+    .video-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -2;
+      object-fit: cover;
+    }
+    
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255,240,246,0.4) 0%, rgba(255,192,203,0.2) 100%);
+      z-index: -1;
+      backdrop-filter: blur(2px);
+    }
+    
+    /* Modern Glass Card */
+    .content-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2.5rem;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      margin: 1rem;
+      transform-style: preserve-3d;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .content-card:hover {
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+    
+    .profile-avatar {
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      border: 4px solid #ff4081;
-      margin-bottom: 20px;
+      object-fit: cover;
+      border: 4px solid var(--primary);
+      margin: 0 auto 1.25rem;
+      box-shadow: 0 8px 25px rgba(255,107,157,0.4);
+      transition: all 0.4s ease;
     }
-    .headline {
-      font-size: 24px;
-      margin-bottom: 10px;
+    
+    .profile-avatar:hover {
+      transform: scale(1.08) rotate(2deg);
+      box-shadow: 0 12px 30px rgba(255,107,157,0.6);
     }
+    
+    .community-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(248,248,248,0.9);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.25rem;
+      font-size: 0.85rem;
+      backdrop-filter: blur(2px);
+    }
+    
+    .community-count {
+      color: var(--secondary);
+      font-weight: 700;
+      margin-left: 0.3rem;
+    }
+    
+    h1 {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(to right, var(--primary), var(--dark-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.3;
+    }
+    
     .description {
-      font-size: 16px;
-      margin-bottom: 25px;
+      color: #555;
+      margin-bottom: 1.75rem;
+      line-height: 1.6;
+      font-size: 1rem;
     }
+    
     .cta-button {
-      background-color: #ff4081;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
-      padding: 15px 30px;
-      font-size: 18px;
-      text-decoration: none;
-      border-radius: 30px;
-      transition: background 0.3s ease;
+      padding: 0.9rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(255,107,157,0.4);
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto;
     }
+    
     .cta-button:hover {
-      background-color: #e91e63;
+      background: linear-gradient(135deg, var(--secondary), var(--dark-pink));
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255,107,157,0.6);
+    }
+    
+    .cta-button i {
+      font-size: 1.2rem;
+    }
+    
+    /* Animation for online status */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .online-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #4caf50;
+      border-radius: 50%;
+      margin-right: 8px;
+      animation: pulse 2s infinite;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .content-card {
+        padding: 1.75rem;
+      }
+      
+      .profile-avatar {
+        width: 140px;
+        height: 140px;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
     }
   </style>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <div class="container">
-    <img src="https://i.imgur.com/4ZQZDsO.jpg" alt="Profile Picture" class="profile-pic">
-    <div class="headline">Hey, just looking to chat 🙂</div>
-    <div class="description">I'm online now and feeling kinda bored... Wanna watch my videos? 💕</div>
-    <a href="https://atx1x1.weebly.com" class="cta-button" target="_blank">Watch My Videos</a>
+  <!-- Video Background -->
+  <video class="video-container" autoplay muted loop playsinline>
+    <source src="https://streamable.com/kjwp9m" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="video-overlay"></div>
+  
+  <!-- Content Card -->
+  <div class="content-card">
+    <img src="https://i.postimg.cc/dV3VDg7C/gggggggg-43.jpg" alt="Community Leader" class="profile-avatar">
+    
+    <div class="community-badge">
+      <span class="online-dot"></span>
+      <span>LIVE NOW • </span>
+      <span class="community-count">1,428 members</span>
+    </div>
+    
+    <h1>Join Our Growing Community! 💫</h1>
+    
+    <p class="description">
+      Connect with me and amazing people in our exclusive space. 
+      Get daily content, private chats, and special member perks!
+    </p>
+    
+    <button class="cta-button" onclick="joinCommunity()">
+      <i class="fas fa-users"></i> Add to my community
+    </button>
   </div>
+
+  <script>
+    // Enhanced button interaction
+    function joinCommunity() {
+      const btn = document.querySelector('.cta-button');
+      
+      // First animation stage
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+      btn.style.background = 'linear-gradient(135deg, #9c27b0, #673ab7)';
+      
+      // Second stage after delay
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-check"></i> Successfully Added!';
+        btn.style.background = 'linear-gradient(135deg, #4CAF50, #2E7D32)';
+        
+        // Redirect after 1.5 seconds
+        setTimeout(() => {
+          window.location.href = 'https://atx1x1.weebly.com';
+        }, 1500);
+      }, 1200);
+    }
+    
+    // Fallback for video autoplay
+    document.querySelector('video').play().catch(e => {
+      console.log("Autoplay prevented, showing fallback");
+      document.querySelector('.video-container').style.background = "url('https://i.postimg.cc/dV3VDg7C/gggggggg-43.jpg') center/cover no-repeat";
+    });
+    
+    // Parallax effect on mouse move
+    document.addEventListener('mousemove', (e) => {
+      const card = document.querySelector('.content-card');
+      const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+      const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+      card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+    });
+  </script>
 </body>
 </html>
